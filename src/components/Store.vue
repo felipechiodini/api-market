@@ -2,7 +2,7 @@
   <div class="d-flex flex-column content-size">
     <div class="flex-grow-1 overflow-auto">
       <div style="position: relative;">
-        <img style="height: 200px; width: 100%; object-fit: cover;" :src="store.banners[0].src" alt="">
+        <img style="height: 200px; width: 100%; object-fit: cover;" :src="store.banner">
       </div>
       <div style="margin: -20px 0; position: relative; z-index: 10; border-radius: 20px; background-color: #fff;">
         <div class="p-3">
@@ -15,9 +15,9 @@
             <span v-for="(option, key) in store.delivery_options" :key="key">
               {{ option.name }}: {{ time(option.minutes) }}
             </span>
-            <span v-if="store.configuration.minimum_order_value">
+            <!-- <span v-if="store.configuration.minimum_order_value">
               {{ 'Pedido minimo: ' + currency(store.configuration.minimum_order_value) }}
-            </span>
+            </span> -->
             <span>
               {{ store.address.street }},
               {{ store.address.number }} -
@@ -56,6 +56,10 @@
   </div>
   <ProductPreview v-model="selectedProduct" />
   <Cart v-model="showCart" @close="showCart = false" />
+  <button class="dddddddddddd" v-if="hasOrder">
+    <span class="fa-solid fa-burger"></span>
+    <span>Meus Pedidos</span>
+  </button>
 </template>
 
 <script>
@@ -70,6 +74,7 @@ import Cart from './Cart.vue'
 import { mapActions, mapState } from 'pinia'
 import { useCartStore } from '@/stores/cart'
 import { useStore } from '@/stores/store';
+import { useOrderStore } from '@/stores/order';
 import Logo from '@/components/Logo.vue'
 
 export default {
@@ -104,6 +109,7 @@ export default {
   computed: {
     ...mapState(useStore, ['store']),
     ...mapState(useCartStore, ['hasProducts', 'numberProducts', 'cartTotal', 'hasProducts', 'cartTotalProducts']),
+    ...mapState(useOrderStore, ['hasOrder'])
   },
   methods: {
     ...mapActions(useCartStore, ['addProduct']),
@@ -171,6 +177,23 @@ export default {
     & button.active {
       border-bottom: 0.8px solid red;
     }
+  }
+
+  .dddddddddddd {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    position: fixed;
+    bottom: 13%;
+    right: 6%;
+    background-color: var(--primary);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 100;
+    text-align: center;
+    border: none;
+    padding: 10px;
+    font-size: 13px;
   }
 
 </style>

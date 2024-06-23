@@ -25,7 +25,7 @@ export const useCartStore = defineStore('cart', {
   },
   getters: {
     cartTotalProducts: (state) => {
-      return state.products.reduce((acumulator, product) => acumulator += (product.price.to * product.count), 0)
+      return state.products.reduce((acumulator, product) => acumulator += (product.price * product.count), 0)
     },
     cartTotal: (state) => {
       return state.cartTotalProducts + state.deliveryFee ?? 0
@@ -99,5 +99,5 @@ export const useCartStore = defineStore('cart', {
       }
     }
   },
-  // persist: true  
+  persist: true  
 })

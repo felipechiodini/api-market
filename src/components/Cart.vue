@@ -12,6 +12,7 @@ import StepThree from '@/components/Cart/StepThree.vue'
 import Finished from '@/components/Cart/Finished.vue'
 import { mapState, mapActions } from 'pinia'
 import { useCartStore } from '@/stores/cart'
+import { useOrderStore } from '@/stores/order'
 import Api from '@/js/Api'
 
 export default {
@@ -59,6 +60,7 @@ export default {
   },
   methods: {
     ...mapActions(useCartStore, ['resetCart']),
+    ...mapActions(useOrderStore, ['registerOrder']),
     nextStep() {
       if (this.step === 3) {
         this.placeOrder()
@@ -90,6 +92,7 @@ export default {
         .then(({ data }) => {
           this.close()
           this.resetCart()
+          this.registerOrder(data.order)
           this.step = 1
         }).catch((error) => {
           console.log(error)

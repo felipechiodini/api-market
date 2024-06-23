@@ -1,10 +1,10 @@
 <template>
   <div class="d-flex">
-    <h5 v-if="price.from" class="me-2">
-      {{ currency(price.to) }}
+    <h5 class="me-2">
+      {{ currency(price) }}
     </h5>
-    <h5 class="price-from" v-if="price.from !== null">
-      {{ currency(price.from) }}
+    <h5 class="price-from" v-if="priceFrom">
+      {{ currency(priceFrom) }}
     </h5>
   </div>
 </template>
@@ -12,10 +12,12 @@
 <script>
 
 export default {
-  name: 'price',
   props: {
+    priceFrom: {
+
+    },
     price: {
-      type: Object
+
     }
   }
 }

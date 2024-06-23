@@ -1,11 +1,11 @@
 <template>
   <modal v-model="show">
     <button @click="closeModal()" class="button-rounded">
-      <i class="pi pi-chevron-left"></i>
+      <i class="pi pi-chevron-down"></i>
     </button>
     <div class="d-flex flex-column" v-if="modelValue !== null">
       <div class="flex-grow-1 overflow-auto">
-        <img style="width: 100%; height: 350px; object-fit: cover;" :src="modelValue.photo.src">
+        <img style="width: 100%; height: 350px; object-fit: cover;" :src="modelValue.image">
         <div class="p-2">
           <h6 class="product-title">{{ modelValue.name }}</h6>
           <p class="product-description">{{ modelValue.description }}</p>
@@ -102,7 +102,7 @@ export default {
       return this.modelValue !== null
     },
     total() {
-      return (this.modelValue.price.to + this.additionalsTotal + this.replacementTotal) * this.counter
+      return (this.modelValue.price + this.additionalsTotal + this.replacementTotal) * this.counter
     },
     additionalsTotal() {
       return this.additionals.reduce((acumulator, additional) => acumulator += additional.price * additional.amount, 0)

@@ -3,7 +3,7 @@
     <CartHeader @click="$emit('back')" />
     <div class="flex-grow-1 overflow-auto">
       <div class="d-flex m-0 p-3 border-bottom" @click="$emit('open-preview', product.id)" v-for="(product, key) in products" :key="key">
-        <img class="image rounded" :src="product.photo.src">
+        <img class="image rounded" :src="fullProduct(product).image">
         <div class="col px-2">
           <h6 class="mb-3 title">{{ product.name }}</h6>
           <template v-if="product.additionals">
@@ -52,7 +52,8 @@
 <script>
 import CartHeader from './Header.vue'
 import { mapActions, mapState } from 'pinia'
-import { useCartStore } from '@/stores/cart';
+import { useCartStore } from '@/stores/cart'
+import { useStore } from '@/stores/store'
 
 export default {
   name: 'step-one',
@@ -60,7 +61,8 @@ export default {
     CartHeader
   },
   computed: {
-    ...mapState(useCartStore, ['products', 'numberProducts', 'hasProducts', 'cartTotal'])
+    ...mapState(useCartStore, ['products', 'numberProducts', 'hasProducts', 'cartTotal']),
+    ...mapState(useStore, ['store'])
   },
   methods: {
     ...mapActions(useCartStore, ['decrementProduct', 'incrementProduct']),
@@ -71,8 +73,11 @@ export default {
         this.$emit('back') // close modal
       }
     },
+    fullProduct(product) {
+      return this.store.products.find(i => i.id === product.id)
+    },
     calculateTotal(product) {
-      return product.price.to * product.count
+      return product.price * product.count
     }
   }
 }

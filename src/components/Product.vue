@@ -3,9 +3,9 @@
     <div class="col p-2">
       <h3 class="product-title">{{ product.name }}</h3>
       <p class="text-muted">{{ product.description }}</p>
-      <price :price="product.price" />
+      <price :price-from="product.price_from" :price="product.price" />
     </div>
-    <img class="wioahfgowaf" :src="product.photo.src">
+    <img class="wioahfgowaf" :src="product.image">
   </div>
 </template>
 

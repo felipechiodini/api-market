@@ -3,14 +3,18 @@ import { defineStore } from 'pinia'
 export const useOrderStore = defineStore('order', {
   state: () => {
     return {
-        orders: []
+      orders: {}
     }
   },
   getters: {
-    
+    hasOrder() {
+      return false
+    }
   },
   actions: {
-
-  }
-  // persist: true  
+    registerOrder(order) {
+      this.orders[order.id] = order
+    }
+  },
+  persist: true  
 })
