@@ -5,6 +5,7 @@ export const useCartStore = defineStore('cart', {
   state: () => {
     return {
       products: [],
+      total: 0,
       delivery: {
         type: null
       },
@@ -24,11 +25,8 @@ export const useCartStore = defineStore('cart', {
     }
   },
   getters: {
-    cartTotalProducts: (state) => {
-      return state.products.reduce((acumulator, product) => acumulator += (product.price * product.count), 0)
-    },
     cartTotal: (state) => {
-      return state.cartTotalProducts + state.deliveryFee ?? 0
+      return state.total
     },
     deliveryFee: (state) => {
       return state.neighborhood?.price || null
@@ -52,6 +50,11 @@ export const useCartStore = defineStore('cart', {
     },
   },
   actions: {
+    setCart(cart) {
+      console.log(cart)
+      this.products = cart.products
+      this.total = cart.total 
+    },
     addProductToCart(payload) {
       const product = this.products.find(product => product.id === payload.id)
 
