@@ -1,34 +1,30 @@
 <template>
-  <div class="container">
+  <div class="container p-3 mt-4">
+    <button class="dioawjioawjiofw">
+      Voltar
+    </button>
     <div class="d-flex flex-column py-4">
+      <h1>Bem vindo, entre para fazer suas compras</h1>
       <form class="fpwakfpowafpowjnaofwa" @submit.prevent="onSubmit()">
         <div>
-          <label for="email">Email</label>
-          <InputText id="email" type="text" v-model="email" />
-          <small class="text-danger" v-if="errors.has('email')" severity="error">{{ errors.get('email') }}</small>
+          <input class="custom-input" id="email" placeholder="E-mail" type="text" v-model="email" />
         </div>
         <div>
-          <label for="senha">Senha</label>
-          <InputText id="senha" type="password" v-model="password" />
-          <small class="text-danger" v-if="errors.has('password')" severity="error">{{ errors.get('password') }}</small>
+          <input class="custom-input" id="senha" placeholder="Senha" type="password" v-model="password" />
         </div>
         <div class="d-flex flex-column">
-          <Button type="submit" :loading="loading">
+          <button class="fopjawofijwiod" type="submit" :loading="loading">
             Entrar
-          </Button>
+          </button>
         </div>
       </form>
       <div class="d-flex flex-column gap-2 mt-4">
-        <div>
-          <!-- <RouterLink :to="{ name: 'forget-password' }">
-            Esqueci minha senha
-          </RouterLink> -->
-        </div>
-        <div>
-          <!-- <RouterLink :to="{ name: 'sing-up' }">
-            Criar Conta
-          </RouterLink> -->
-        </div>
+        <RouterLink :to="{ name: 'forget-password' }">
+          Esqueci minha senha
+        </RouterLink>
+        <RouterLink :to="{ name: 'sing-up' }">
+          Criar Conta
+        </RouterLink>
       </div>
     </div>
   </div>
@@ -53,10 +49,9 @@ export default {
   },
   data: () => {
     return {
-      email: 'felipechiodinibona@hotmail.com',
-      password: '132567',
+      email: null,
+      password: null,
       loading: false,
-      submitted: false,
       errors: new ErrorBag()
     }
   },
@@ -79,6 +74,31 @@ export default {
 </script>
 
 <style scoped>
+
+.dioawjioawjiofw {
+  background-color: black;
+  color: #ccc;
+  padding: 10px;
+  font-size: 12px;
+  border: none;
+  border-radius: 10px;
+}
+
+.custom-input {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.fopjawofijwiod {
+  background-color: black;
+  color: #ccc;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
 
 .fpwakfpowafpowjnaofwa {
   display: flex;
