@@ -1,6 +1,6 @@
 <template>
   <div class="container p-3 mt-4">
-    <button class="dioawjioawjiofw">
+    <button class="dioawjioawjiofw" @click="$router.go(-1)">  
       Voltar
     </button>
     <div class="d-flex flex-column py-4">
