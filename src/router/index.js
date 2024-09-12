@@ -21,7 +21,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/registrar',
+      path: '/criar-conta',
       component: () => import('@/views/SingUp.vue'),
       name: 'sing-up',
       meta: {

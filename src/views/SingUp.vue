@@ -1,31 +1,31 @@
 <template>
-  <div class="container">
-    <div class="d-flex flex-column py-4">
+  <div class="container p-4 mt-3">
+    <button class="dioawjioawjiofw">
+      Voltar
+    </button>
+    <div class="d-flex flex-column my-3">
+      <h1>Olá, crie sua conta para começar. <span>É grátis!</span></h1>
       <form class="fpwakfpowafpowjnaofwa" @submit.prevent="onSubmit()">
         <div>
-          <label for="name">Nome</label>
-          <InputText id="name" type="text" v-model="name" />
+          <input class="custom-input" placeholder="Nome" id="name" type="text" v-model="name" />
           <small class="text-danger" v-if="errors.has('name')" severity="error">{{ errors.get('name') }}</small>
         </div>
         <div>
-          <label for="email">Email</label>
-          <InputText id="email" type="text" v-model="email" />
+          <input class="custom-input" placeholder="E-mail" id="email" type="text" v-model="email" />
           <small class="text-danger" v-if="errors.has('email')" severity="error">{{ errors.get('email') }}</small>
         </div>
         <div>
-          <label for="password">Senha</label>
-          <InputText id="password" type="password" v-model="password" />
+          <input class="custom-input" placeholder="Senha" id="password" type="password" v-model="password" />
           <small class="text-danger" v-if="errors.has('password')" severity="error">{{ errors.get('password') }}</small>
         </div>
         <div>
-          <label for="confirmPassword">Confirmar Senha</label>
-          <InputText id="confirmPassword" type="password" v-model="confirmPassword" />
-          <small class="text-danger" v-if="errors.has('confirmPassword')" severity="error">{{ errors.get('confirmPassword') }}</small>
+          <input class="custom-input" placeholder="Celular" id="cellphone" type="text" v-model="cellphone" />
+          <small class="text-danger" v-if="errors.has('cellphone')" severity="error">{{ errors.get('cellphone') }}</small>
         </div>
         <div class="d-flex flex-column">
-          <Button type="submit" :loading="loading">
+          <button class="fopjawofijwiod" type="submit" :loading="loading">
             Cadastrar
-          </Button>
+          </button>
         </div>
       </form>
     </div>
@@ -90,6 +90,24 @@ export default {
   margin: auto;
   object-fit: cover;
 }
+
+.fopjawofijwiod {
+  background-color: black;
+  color: #ccc;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+.dioawjioawjiofw {
+  background-color: black;
+  color: #ccc;
+  padding: 10px;
+  font-size: 12px;
+  border: none;
+  border-radius: 10px;
+}
+
 
 </style>
 

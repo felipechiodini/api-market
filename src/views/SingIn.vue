@@ -84,14 +84,6 @@ export default {
   border-radius: 10px;
 }
 
-.custom-input {
-  height: 50px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  width: 100%;
-  padding: 0 10px;
-}
-
 .fopjawofijwiod {
   background-color: black;
   color: #ccc;

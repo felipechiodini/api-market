@@ -12,6 +12,14 @@ $prefix: '';
   height: 100vh;
 }
 
+.custom-input {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  padding: 0 10px;
+}
+
 @supports (-webkit-touch-callout: none) {
   .content-size {
     height: -webkit-fill-available;
