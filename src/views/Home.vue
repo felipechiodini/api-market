@@ -1,32 +1,33 @@
 <template>
-  <div class="p-3">
-
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <h5>Olá, {{ user.name }}</h5>
+  <div>
+    <div class="d-flex justify-content-between align-items-center mb-3 p-3" style="background-color: black;">
+      <h5 style="color: #ccc;">Olá, {{ firstName }}</h5>
       <button class="btn btn-primary" @click="$router.push({ name: 'profile' })">
         Meu Perfil
       </button>
     </div>
-
-    <div class="dioawjfowafwa">
-      <img class="opawjfowiadjw" src="https://picsum.photos/200" alt="">
-      <span class="dioawjdiowa">
-        {{ home.name }}
-      </span>
-    </div>
-    <div class="dopawjkdopawjdiow">
-      <div class="dawiojdwia" v-for="(product, key) in home.products" :key="key">
-        <img src="https://picsum.photos/200" alt="">
-        <div class="dioawjiaw">
-          <span class="dfopjawodwajodwjai">{{ product.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) }}</span>
-          <span class="doaiwjdiowa">{{ product.name }}</span>
-          <button class="btn btn-primary" @click="addCart(product)">
-            Adicionar
-          </button>
+    <div class="p-3">
+      <div class="dioawjfowafwa">
+        <img class="opawjfowiadjw" src="https://picsum.photos/200" alt="">
+        <span class="dioawjdiowa">
+          {{ home.name }}
+        </span>
+      </div>
+      <div class="dopawjkdopawjdiow">
+        <div class="dawiojdwia" v-for="(product, key) in home.products" :key="key">
+          <img src="https://picsum.photos/200" alt="">
+          <div class="dioawjiaw">
+            <span class="dfopjawodwajodwjai">{{ product.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) }}</span>
+            <span class="doaiwjdiowa">{{ product.name }}</span>
+            <button class="btn btn-primary" @click="addCart(product)">
+              Adicionar
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
   <div class="dopjkawodpwajdkop">
     <div class="doipawjfoiawhfjwia">
       <span>Total sem entrega</span>
@@ -59,7 +60,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(useUserStore, ['user']),
+    ...mapState(useUserStore, ['firstName']),
     ...mapState(useCartStore, ['cartTotal']),
   },
   mounted() {
