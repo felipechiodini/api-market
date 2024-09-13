@@ -1,28 +1,15 @@
 <template>
   <div>
-    <div class="d-flex justify-content-between align-items-center mb-3 p-3" style="background-color: black;">
-      <h5 style="color: #ccc;">Olá, {{ firstName }}</h5>
-      <button class="btn btn-primary" @click="$router.push({ name: 'profile' })">
-        Meu Perfil
-      </button>
+    <div class="d-flex justify-content-between align-items-center p-3" style="background-color: black; border-radius: 0 0 10px 10px;">
+      <h6 class="text-white m-0">{{ home.name }}</h6>
+      <img src="https://picsum.photos/200" alt="" @click="$router.push({ name: 'profile' })" style="border-radius: 50%; height: 50px; width: 50px; object-fit: cover">
     </div>
     <div class="p-3">
-      <div class="dioawjfowafwa">
-        <img class="opawjfowiadjw" src="https://picsum.photos/200" alt="">
-        <span class="dioawjdiowa">
-          {{ home.name }}
-        </span>
-      </div>
-      <div class="dopawjkdopawjdiow">
-        <div class="dawiojdwia" v-for="(product, key) in home.products" :key="key">
-          <img src="https://picsum.photos/200" alt="">
-          <div class="dioawjiaw">
-            <span class="dfopjawodwajodwjai">{{ product.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) }}</span>
-            <span class="doaiwjdiowa">{{ product.name }}</span>
-            <button class="btn btn-primary" @click="addCart(product)">
-              Adicionar
-            </button>
-          </div>
+      <div class="dopawjkdopawjdiow" style="background-color: #fff;" v-for="(product, key) in home.products.concat(home.products)" :key="key">
+        <img src="https://picsum.photos/200" style="width: 120px; object-fit: cover;">
+        <div class="d-flex flex-column justify-content-between p-2 w-100">
+          <h5 class="m-0">{{ product.name }}</h5>
+          <h3 class="m-0">{{ product.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) }}</h3>
         </div>
       </div>
     </div>
@@ -86,26 +73,6 @@ export default {
 
 <style scoped>
 
-.dawiojdwia img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.dawiojdwia {
-  cursor: pointer;
-  display: block;
-  background-color: #d7d7d7;
-  border: none;
-  border-radius: 10px;
-}
-
-.dawiojdwia .dioawjiaw {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-
 .dawopjfwiofjoawd {
   width: 100%;
   height: 100%;
@@ -144,15 +111,11 @@ export default {
 
 .dopawjkdopawjdiow {
   display: flex;
-  flex-direction: column;
   width: 100%;
-  gap: 10px;
   margin-top: 10px;
   overflow: auto;
-}
-
-.dopawjkdopawjdiow::-webkit-scrollbar {
-  display: none;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
 .dfopjawodwajodwjai {
