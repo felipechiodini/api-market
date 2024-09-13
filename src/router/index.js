@@ -53,6 +53,14 @@ const router = createRouter({
       }
     },
     {
+      path: '/enderecos',
+      component: () => import('@/views/Address.vue'),
+      name: 'addresses',
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/carrinho',
       component: () => import('@/views/FinishCart.vue'),
       name: 'checkout',
