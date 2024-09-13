@@ -15,12 +15,12 @@
           <small class="text-danger" v-if="errors.has('email')" severity="error">{{ errors.get('email') }}</small>
         </div>
         <div>
-          <input class="custom-input" placeholder="Senha" id="password" type="password" v-model="password" />
-          <small class="text-danger" v-if="errors.has('password')" severity="error">{{ errors.get('password') }}</small>
-        </div>
-        <div>
           <input class="custom-input" placeholder="Celular" id="cellphone" type="text" v-model="cellphone" />
           <small class="text-danger" v-if="errors.has('cellphone')" severity="error">{{ errors.get('cellphone') }}</small>
+        </div>
+        <div>
+          <input class="custom-input" placeholder="Senha" id="password" type="password" v-model="password" />
+          <small class="text-danger" v-if="errors.has('password')" severity="error">{{ errors.get('password') }}</small>
         </div>
         <div class="d-flex flex-column">
           <button class="fopjawofijwiod" type="submit" :loading="loading">
@@ -51,10 +51,10 @@ export default {
   },
   data: () => {
     return {
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
+      name: null,
+      email: null,
+      cellphone: null,
+      password: null,
       loading: false,
       submitted: false,
       errors: new ErrorBag()
@@ -64,9 +64,10 @@ export default {
     ...mapActions(useUserStore, ['setToken', 'setUser']),
     onSubmit() {
       this.loading = true
-      Api.post('register', { name: this.name, email: this.email, password: this.password, password_confirmation: this.confirmPassword })
+      Api.post('register', { name: this.name, email: this.email, password: this.password, cellphone: this.cellphone })
         .then(({ data }) => {
-          this.setToken(data.access_token)
+          this.setUser(data.user)
+          this.setToken(data.token)
           this.$router.push({ name: 'home' })
         })
         .catch((errors) => this.errors.record(errors.response.data.errors))
