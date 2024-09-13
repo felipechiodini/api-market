@@ -1,5 +1,5 @@
 <template>
-  <div class="container p-3 mt-4">
+  <div class="container p-3 pt-5">
     <button class="dioawjioawjiofw" @click="$router.go(-1)">  
       Voltar
     </button>
@@ -8,6 +8,7 @@
       <form class="fpwakfpowafpowjnaofwa" @submit.prevent="onSubmit()">
         <div>
           <input class="custom-input" id="email" placeholder="E-mail" type="text" v-model="email" />
+          <span>{{ errors.get('email') }}</span>
         </div>
         <div>
           <input class="custom-input" id="senha" placeholder="Senha" type="password" v-model="password" />

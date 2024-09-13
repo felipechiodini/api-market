@@ -14,7 +14,7 @@
         <i class="fas fa-map me-2"></i>
         <span>Endereços</span>
       </div>
-      <div>
+      <div @click="onLogout()">
         <i class="fas fa-sign-out-alt me-2"></i>
         <span>Sair</span>
       </div>
@@ -32,8 +32,8 @@ export default {
   },
   methods: {
     onLogout() {
-      localStorage.clear()
-      this.$router.push({ name: 'sing-in' })
+      localStorage.removeItem('user')
+      location.reload()
     },
   }
 }
