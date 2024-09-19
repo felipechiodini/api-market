@@ -26,7 +26,7 @@
               {{ store.address.state }}
             </span>
           </div>
-          <Warning class="mt-3" v-if="store.configuration.warning" :text="store.configuration.warning" />
+          <Warning class="mt-3" v-if="store.configuration?.warning" :text="store.configuration.warning" />
         </div>
         <div class="faopwjfowpafhoiwafhiowa">
           <button v-for="(category, key) in store.categories" :key="key" @click="scrollToCategory(category)">
